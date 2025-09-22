@@ -83,15 +83,26 @@ def start1():
     drive_base.straight(610) #ANDAR PRA FRENTE
     giroPID(40,1.5,0.001,1) #VIRAR PRO LADO
     drive_base.settings(200,500) #MUDAR VELOCIDADE
-    drive_base.straight(120) #ANDAR PRA FRENTE
-    drive_base.straight(-25) #ANDAR PRA FRENTE
+    drive_base.straight(120) #ANDAR PRA FRENTE EM DIREÇÃO A ATIVAÇÃO DAS PEDRAS
+    drive_base.straight(-20) #ANDAR PRA TRAZ  
     giroPID(48,1.5,0.001,1) #VIRAR PRO LADO
-    drive_base.straight(90) #ANDAR PRA FRENTE
+    drive_base.straight(90) #ANDAR PRA FRENTE EMPURANDO AS PEDRAS 
     motor_anexo_direita.run_angle(-300,185)
     wait(500)
-    drive_base.straight(120) #ANDAR PRA FRENTE
+    drive_base.straight(140) #ANDAR PRA FRENTE PUXANDO A ARGOLA 
     motor_anexo_direita.run_angle(300,200)
+    drive_base.straight(-230) #ANDAR PRA TRAZ
+    giroPID(48,1.5,0.001,1) #VIRAR PRO LADO
+    drive_base.settings(200,300) #MUDAR VELOCIDADE
 
+    drive_base.straight(-140) #ANDAR PRA TRAZ EMPURANDO A ALAVANCA
+    drive_base.straight(50) #ANDAR PRA FRENTE
+    giroPID(34,1.5,0.001,1) #VIRAR PRO LADO EM DIREÇÃO A BASE
+    drive_base.settings(800,800) #MUDAR VELOCIDADE
+    drive_base.straight(650) #ANDAR PRA FRENTE PARA A BASE 
+    
+
+    
  
 
 
