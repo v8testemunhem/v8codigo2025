@@ -100,7 +100,11 @@ def start1():
     sm.next_state()
 
 def start2():
-    
+    drive_base.settings(400,500) #MUDAR VELOCIDADE
+    drive_base.straight(710) #ANDAR PRA FRENTE
+    giroPID(-38,1.5,0.001,1) #VIRAR PRO LADO
+    drive_base.settings(250,500) #MUDAR VELOCIDADE
+    drive_base.straight(200) #ANDAR PRA FRENTE
 
 
 
