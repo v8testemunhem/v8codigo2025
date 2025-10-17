@@ -131,24 +131,25 @@ def start2(): #START DAS MISSÕES DA ESCAVAÇÃO SUPERFICIAL E DA REVELAÇÃO DO
 
     resetar_guinada() 
 
-    drive_base.settings(500,300) #DEFINIÇÃO DA VELOCIDADE PARA A RETA
-    drive_base.straight(720) #ANDAR PARA FRENTE EM DIREÇÃO A MISSÃO DA ESCAVAÇÃO SUPERFICIAL
+    drive_base.settings(800,300) #DEFINIÇÃO DA VELOCIDADE PARA A RETA
+    drive_base.straight(730) #ANDAR PARA FRENTE EM DIREÇÃO A MISSÃO DA ESCAVAÇÃO SUPERFICIAL
 
-    giroPID(-38,1,0.001,1) #GIRAR PARA ESQUERDA
+    giroPID(-38,1.5,0.001,1) #GIRAR PARA ESQUERDA
     resetar_guinada() #MUDAR GUINADA PARA ZERO
     drive_base.settings(200,200) #MUDANÇA DE VELOCIDADE PARA CONCLUIR A MISSÃO DA ESCAVAÇÃO SUPERFICIAL
     drive_base.straight(180) #IR PARA FRENTE PARA CONCLUIR A MISSÃO
     motor_anexo_esquerda.run_angle(300,300) #ABAIXAR O ANEXO ESQUERDO PARA PEGAR O ARTEFATO
     drive_base.straight(-200) #IR PARA TRÁS 
     resetar_guinada() #MUDAR GUINADA PARA ZERO   
-    giroPID(-57,4,0.001,1) #GIRAR PARA ESQUERDA PARA IR PARA A PROXIMA MISSÃO DA REVELAÇÃO DO MAPA
+    giroPID(-57,2,0.001,1) #GIRAR PARA ESQUERDA PARA IR PARA A PROXIMA MISSÃO DA REVELAÇÃO DO MAPA
     resetar_guinada() #MUDAR GUINADA PARA ZERO
 
     drive_base.straight(155) #IR PARA A FRENTE EM DIREÇÃO A MISSÃO DA REVELAÇÃO DO MAPA
     motor_anexo_direita.run_angle(-300,300) #ABAIXAR O ANEXO DIREITO PARA PEGAR O ARTEFATO DA MISSÃO REVELAÇÃO DO MAPA
+    drive_base.settings(800,500)
     drive_base.straight(-150) #VOLTAR PARA TRÁS
     resetar_guinada() #RESETAR GUINADA PARA ZERO
-    giroPID(-65,2,0.001,1) #GIRAR PARA ESQUERDA PARA IR PARA A BASE
+    giroPID(-60,4,0.001,1) #GIRAR PARA ESQUERDA PARA IR PARA A BASE
     drive_base.settings(800,8000) #MUDAR VELOCIDADE PRA VOLTAR A BASE
     drive_base.straight(500) #IR PARA A BASE
     wait (50)
@@ -195,8 +196,8 @@ def start4(): #START MISSÃO OPERAÇÃO RESGATE
     drive_base.settings(700,300) #MUDAR VELOCIDADE PARA IR PARA FRENTE PARA CONCLUIR A MISSÃO OPERAÇÃO DE RESGATE
 
     drive_base.straight(270) #IR PARA FRENTE PARA CONCLUIR  A MISSÃO OPERAÇÃO DE RESGATE
-    wait (1000)
-    drive_base.settings(800,300) #MUDAR VELOCIDADE PARA IR PARA TRÁS 
+    #wait (1000)
+    drive_base.settings(800,5000) #MUDAR VELOCIDADE PARA IR PARA TRÁS 
 
     drive_base.straight(-600) #VOLTAR PARA TRÁS
     wait (50)
@@ -207,6 +208,7 @@ def start5(): #EXTRAÇÃO SEGURA
    drive_base.use_gyro(True)
 
    resetar_guinada()
+   drive_base.settings(400,400) #MUDAR VELOCIDADE PARA IR PARA TRÁS 
 
    drive_base.straight(35) #INICIAR MOVIMENTO DA PRIMEIRA RETA PARA FRENTE
    giroPID(30,0.7,0.0003,120) #GIRAR PARA A DIREITA EM DIREÇÃO A MISSÃO EXTRAÇÃO SEGURA
@@ -220,7 +222,7 @@ def start5(): #EXTRAÇÃO SEGURA
    drive_base.straight(190)#IR PARA FRENTE
    drive_base.straight(-25) #VOLTAR PARA TRAS
    resetar_guinada() #DEFINIR GUINADA PARA ZERO
-   giroPID(-10,2.0,0.003,120) #GIRAR PARA ESQUERDA
+   giroPID(-2,2,0.003,120) #GIRAR PARA ESQUERDA
    motor_anexo_esquerda.run_angle(-800,5000) #ABAIXAR O ANEXO PARA CONCLUIR A MISSÃO EXTRAÇÃO SEGURA
    drive_base.straight(-80) #VOLTAR PARA TRÁS
    resetar_guinada() #DEFINIR GUINADA PARA ZERO
