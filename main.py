@@ -101,8 +101,8 @@ def start1(): #START DAS PEDRAS
     giroPID(40,1.5,0.001,1) #VIRAR PRO LADO
     resetar_guinada()
     drive_base.settings(200,500) #MUDAR VELOCIDADE
-    drive_base.straight(115) #ANDAR PRA FRENTE EM DIREÇÃO A ATIVAÇÃO DAS PEDRAS
-    drive_base.straight(-25) #ANDAR PRA TRAZ  
+    drive_base.straight(125) #ANDAR PRA FRENTE EM DIREÇÃO A ATIVAÇÃO DAS PEDRAS
+    drive_base.straight(-35) #ANDAR PRA TRAZ  
     giroPID(48,1.5,0.0001,1) #VIRAR PRO LADO
     resetar_guinada()
     drive_base.straight(90) #ANDAR PRA FRENTE EMPURANDO AS PEDRAS 
@@ -110,14 +110,14 @@ def start1(): #START DAS PEDRAS
     wait(500)
     drive_base.straight(140) #ANDAR PRA FRENTE PUXANDO A ARGOLA 
     motor_anexo_direita.run_angle(300,200)
-    drive_base.straight(-230) #ANDAR PRA TRAZ
-    giroPID(48,1.5,0.001,1) #VIRAR PRO LADO
+    drive_base.straight(-210) #ANDAR PRA TRAZ
+    giroPID(41,1.5,0.001,1) #VIRAR PRO LADO
     resetar_guinada()
     drive_base.settings(200,300) #MUDAR VELOCIDADE
 
-    drive_base.straight(-150) #ANDAR PRA TRAZ EMPURANDO A ALAVANCA
+    drive_base.straight(-170) #ANDAR PRA TRAZ EMPURANDO A ALAVANCA
     drive_base.straight(50) #ANDAR PRA FRENTE
-    giroPID(34,1.5,0.001,1) #VIRAR PRO LADO EM DIREÇÃO A BASE
+    giroPID(40,1.5,0.001,1) #VIRAR PRO LADO EM DIREÇÃO A BASE
     resetar_guinada()
     drive_base.settings(900,5000) #MUDAR VELOCIDADE
     drive_base.straight(650) #ANDAR PRA FRENTE PARA A BASE    
@@ -137,15 +137,15 @@ def start2(): #START DAS MISSÕES DA ESCAVAÇÃO SUPERFICIAL E DA REVELAÇÃO DO
     giroPID(-38,1.5,0.001,1) #GIRAR PARA ESQUERDA
     resetar_guinada() #MUDAR GUINADA PARA ZERO
     drive_base.settings(200,200) #MUDANÇA DE VELOCIDADE PARA CONCLUIR A MISSÃO DA ESCAVAÇÃO SUPERFICIAL
-    drive_base.straight(180) #IR PARA FRENTE PARA CONCLUIR A MISSÃO
-    motor_anexo_esquerda.run_angle(300,300) #ABAIXAR O ANEXO ESQUERDO PARA PEGAR O ARTEFATO
+    drive_base.straight(200) #IR PARA FRENTE PARA CONCLUIR A MISSÃO
+    motor_anexo_esquerda.run_angle(800,300) #ABAIXAR O ANEXO ESQUERDO PARA PEGAR O ARTEFATO
     drive_base.straight(-200) #IR PARA TRÁS 
     resetar_guinada() #MUDAR GUINADA PARA ZERO   
     giroPID(-57,2,0.001,1) #GIRAR PARA ESQUERDA PARA IR PARA A PROXIMA MISSÃO DA REVELAÇÃO DO MAPA
     resetar_guinada() #MUDAR GUINADA PARA ZERO
 
     drive_base.straight(155) #IR PARA A FRENTE EM DIREÇÃO A MISSÃO DA REVELAÇÃO DO MAPA
-    motor_anexo_direita.run_angle(-300,300) #ABAIXAR O ANEXO DIREITO PARA PEGAR O ARTEFATO DA MISSÃO REVELAÇÃO DO MAPA
+    motor_anexo_direita.run_angle(-800,300) #ABAIXAR O ANEXO DIREITO PARA PEGAR O ARTEFATO DA MISSÃO REVELAÇÃO DO MAPA
     drive_base.settings(800,500)
     drive_base.straight(-150) #VOLTAR PARA TRÁS
     resetar_guinada() #RESETAR GUINADA PARA ZERO
@@ -167,7 +167,7 @@ def start3(): #START MISSÃO GANGORRA E OQUE ESTÁ A VENDA
 
     drive_base.settings(300,200) #DEFINIR VELOCIDADE PARA A PRIMEIRA RETA
     drive_base.straight(40) #ANDAR PARA FRENTE ANTES DO GIRO
-    giroPID(-41,0.7,0.0003,120) #GIRAR PARA A ESQUERDA EM DIREÇÃO A MISSÃO DA GANGORRA
+    giroPID(-43,1.5,0.0003,120) #GIRAR PARA A ESQUERDA EM DIREÇÃO A MISSÃO DA GANGORRA
     wait(500)
     resetar_guinada() #DEFINIR GUINDADA PARA ZERO
     drive_base.settings(900,2000) #DEFINIR VELOCIDADE PARA A SEGUNDA RETA
@@ -177,7 +177,7 @@ def start3(): #START MISSÃO GANGORRA E OQUE ESTÁ A VENDA
     motor_anexo_direita.run_angle(400,350) #ABAIXAR O ANEXO DIREITO PARA PEGAR O ARTEFATO DA MISSÃO DA GANGORRA
 
     drive_base.settings(750,80) #MUDAR A VELOCIDADE  PARA A VOLTA
-    drive_base.straight(-600) #VOLTAR PARA BASE
+    drive_base.straight(-520) #VOLTAR PARA BASE
     wait (50)
     drive_base.use_gyro(False)
 
@@ -200,9 +200,10 @@ def start4(): #START MISSÃO OPERAÇÃO RESGATE
     drive_base.settings(800,5000) #MUDAR VELOCIDADE PARA IR PARA TRÁS 
 
     drive_base.straight(-600) #VOLTAR PARA TRÁS
+
     wait (50)
     drive_base.use_gyro(False)
-    sm.next_state
+    sm.next_state()
 
 def start5(): #EXTRAÇÃO SEGURA
    drive_base.use_gyro(True)
@@ -210,7 +211,7 @@ def start5(): #EXTRAÇÃO SEGURA
    resetar_guinada()
    drive_base.settings(400,400) #MUDAR VELOCIDADE PARA IR PARA TRÁS 
 
-   drive_base.straight(35) #INICIAR MOVIMENTO DA PRIMEIRA RETA PARA FRENTE
+   drive_base.straight(35) #INICIAR MOVIMENTO DA PRIMEIRA RETA PARA FRENTE                                      
    giroPID(30,0.7,0.0003,120) #GIRAR PARA A DIREITA EM DIREÇÃO A MISSÃO EXTRAÇÃO SEGURA
    drive_base.straight(420) #IR PARA FRENTE EM DIREÇÃO A MISSÃO EXTRAÇÃO SEGURA
    drive_base.straight(-150) #VOLTAR PARA TRÁS
@@ -218,12 +219,12 @@ def start5(): #EXTRAÇÃO SEGURA
    giroPID(59,0.7,0.0003,120) #GIRAR PARA A DIREITA
    drive_base.straight(615)#IR PARA A FRENTE
    resetar_guinada() #DEFINIR GUINADA PARA ZERO
-   giroPID(73,0.7,0.0003,120) #GIRAR PARA A DIREITA
+   giroPID(75,0.7,0.0003,120) #GIRAR PARA A DIREITA
    drive_base.straight(190)#IR PARA FRENTE
    drive_base.straight(-25) #VOLTAR PARA TRAS
    resetar_guinada() #DEFINIR GUINADA PARA ZERO
    giroPID(-2,2,0.003,120) #GIRAR PARA ESQUERDA
-   motor_anexo_esquerda.run_angle(-800,5000) #ABAIXAR O ANEXO PARA CONCLUIR A MISSÃO EXTRAÇÃO SEGURA
+   motor_anexo_esquerda.run_angle(-800,3000) #ABAIXAR O ANEXO PARA CONCLUIR A MISSÃO EXTRAÇÃO SEGURA
    drive_base.straight(-80) #VOLTAR PARA TRÁS
    resetar_guinada() #DEFINIR GUINADA PARA ZERO
    giroPID(-50,2,0.003,120) #GIRAR PARA ESQUERDA 
@@ -238,21 +239,53 @@ def start6(): #PESCA DE ARTEFATOS
 
    resetar_guinada()
 
-   drive_base.straight(650) #COMEÇAR A RETA
-   giroPID(90,0.7,0.0003,120) #GIRAR PARA A DIREITA
-   drive_base.straight(360) #IR PARA A FRENTE
+   drive_base.straight(660) #COMEÇAR A RETA
+   giroPID(-90,0.7,0.0003,120) #GIRAR PARA A DIREITA
+   drive_base.straight(-380) #IR PARA A FRENTE
    resetar_guinada() #DEFINIR GUINADA PARA ZERO
-   giroPID(-90,0.7,0.0003,120) #GIRAR PARA A ESQUERDA ANTES DO MOVIMENTO DO ANEXO
+   giroPID(90,0.7,0.0003,120) #GIRAR PARA A ESQUERDA ANTES DO MOVIMENTO DO ANEXO
    motor_anexo_esquerda.run_time(-500,1000) #ABAIXAR O ANEXO ESQUERDO
-   drive_base.straight(15) #ANDAR UM POUCO
+   #drive_base.straight(15) #ANDAR UM POUCO
    motor_anexo_esquerda.run_time(4000,1000) #LEVANTAR O ANEXO PARA CONCLUIR A MISSÃO
-   drive_base.straight(140) #IR UM POUCO PARA FRENTE ANTES DO MOVIMENTO DOS ANEXOS PARA FINAIZAR AS MISSÕES
-   motor_anexo_direita.run_angle(800,300) #LEVANTAR O ANEXO PARA CONCLUIR A MISSÃO
-   motor_anexo_direita.run_angle(-400,300) #ABAIXAR O ANEXO PARA CONCLUIR A MISSÃO
+   motor_anexo_direita.run_time(-300,1000) #LEVANTA A CREMALHEIRA 
+
+   drive_base.straight(130) #IR UM POUCO PARA FRENTE ANTES DO MOVIMENTO DOS ANEXOS PARA FINAIZAR AS MISSÕES
+   motor_anexo_direita.run_time(400,2000) #LEVANTA A CREMALHEIRA 
+   motor_anexo_direita.run_angle(-400,500) #LEVANTA A CREMALHEIRA
+   drive_base.straight(-100)
+   giroPID(90,0.7,0.0003,120) #GIRAR PARA A ESQUERDA ANTES DO MOVIMENTO DO ANEXO
+   resetar_guinada()
+   drive_base.straight(-300)
+   giroPID(-45,0.7,0.0003,120) #GIRAR PARA A ESQUERDA ANTES DO MOVIMENTO DO ANEXO
+   drive_base(-700)
+
+
+ 
+
+   #motor_anexo_direita.run_angle(500,300) #LEVANTAR O ANEXO PARA CONCLUIR A MISSÃO
    wait (50)
    drive_base.use_gyro(False)
-
-
+   sm.next_state()
+#ENTREGA DOS ARTEFATOS
+def start7():
+    drive_base.settings(500,400)
+    drive_base.straight(520)
+    giroPID(-45,0.7,0.0003,120)
+    drive_base.straight(300) 
+    resetar_guinada() 
+    giroPID(-25,0.7,0.0003,120)
+    resetar_guinada()
+    motor_anexo_esquerda.run_time(400,600)
+    drive_base.straight(300) 
+    giroPID(-27,0.7,0.0003,120)
+    motor_anexo_esquerda.run_time(-400,500)
+    drive_base.settings(300,250)
+    drive_base.straight(500)
+    resetar_guinada()
+    giroPID(-60,0.7,0.0003,120)
+    drive_base.straight(200)
+    motor_anexo_esquerda.run_time(-300,2000)
+    drive_base.straight(-150)
 #=======================EXECUÇÃO PRINCIPAL==========================#
 if __name__ == "__main__":
     # Definindo os estados
@@ -263,6 +296,9 @@ if __name__ == "__main__":
         {"name": "Start 4", "action": lambda: start1()},
         {"name": "Start 5", "action": lambda: start3()},
         {"name": "Start 6", "action": lambda: start6()},
+        {"name": "Start 7", "action": lambda: start7()},
+
+
     ]
 
     sm = StateMachine(states)
