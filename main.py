@@ -238,34 +238,48 @@ def start6(): #PESCA DE ARTEFATOS
    drive_base.use_gyro(True)
 
    resetar_guinada()
-
+   drive_base.settings(500,500)
    drive_base.straight(660) #COMEÇAR A RETA
    giroPID(-90,0.7,0.0003,120) #GIRAR PARA A DIREITA
-   drive_base.straight(-380) #IR PARA A FRENTE
+   drive_base.straight(-390) #IR PARA A FRENTE
    resetar_guinada() #DEFINIR GUINADA PARA ZERO
-   giroPID(90,0.7,0.0003,120) #GIRAR PARA A ESQUERDA ANTES DO MOVIMENTO DO ANEXO
+   giroPID(88,0.7,0.0003,120) #GIRAR PARA A ESQUERDA ANTES DO MOVIMENTO DO ANEXO
    motor_anexo_esquerda.run_time(-500,1000) #ABAIXAR O ANEXO ESQUERDO
    #drive_base.straight(15) #ANDAR UM POUCO
    motor_anexo_esquerda.run_time(4000,1000) #LEVANTAR O ANEXO PARA CONCLUIR A MISSÃO
    motor_anexo_direita.run_time(-300,1000) #LEVANTA A CREMALHEIRA 
 
    drive_base.straight(130) #IR UM POUCO PARA FRENTE ANTES DO MOVIMENTO DOS ANEXOS PARA FINAIZAR AS MISSÕES
-   motor_anexo_direita.run_time(400,2000) #LEVANTA A CREMALHEIRA 
-   motor_anexo_direita.run_angle(-400,500) #LEVANTA A CREMALHEIRA
-   drive_base.straight(-100)
-   giroPID(90,0.7,0.0003,120) #GIRAR PARA A ESQUERDA ANTES DO MOVIMENTO DO ANEXO
+   motor_anexo_direita.run_time(800,4000) #LEVANTA A CREMALHEIRA 
+   motor_anexo_direita.run_time(-400,1300) #LEVANTA A CREMALHEIRA
+   drive_base.straight(-95)
+   resetar_guinada()
+   giroPID(90,0.7,0.0003,120)
+   drive_base.straight(-310)
+   #motor_anexo_esquerda.run_time(500,1000) #ABAIXAR O ANEXO ESQUERDO
+
+
+   resetar_guinada()
+
+   giroPID(-78,0.7,0.0003,120)
+   drive_base.settings(900,3000)
+   drive_base.straight(-700)
+   wait (50)
+   drive_base.use_gyro(False)
+
+   sm.next_state()
+
+
+''' giroPID(90,0.7,0.0003,120) #GIRAR PARA A ESQUERDA ANTES DO MOVIMENTO DO ANEXO
    resetar_guinada()
    drive_base.straight(-300)
-   giroPID(-45,0.7,0.0003,120) #GIRAR PARA A ESQUERDA ANTES DO MOVIMENTO DO ANEXO
-   drive_base(-700)
+   giroPID(-45,0.7,0.0003,120) #GIRAR PARA A ESQUERDA ANTES DO MOVIMENTO DO ANEXO'''
 
 
  
 
    #motor_anexo_direita.run_angle(500,300) #LEVANTAR O ANEXO PARA CONCLUIR A MISSÃO
-   wait (50)
-   drive_base.use_gyro(False)
-   sm.next_state()
+   
 #ENTREGA DOS ARTEFATOS
 def start7():
     drive_base.settings(500,400)
