@@ -126,7 +126,7 @@ def start1(): #START DAS PEDRAS
 
     sm.next_state()
 
-def start2(): #START DAS MISSÕES DA ESCAVAÇÃO SUPERFICIAL E DA REVELAÇÃO DO MAPA
+def start2(): #start1 #START DAS MISSÕES DA ESCAVAÇÃO SUPERFICIAL E DA REVELAÇÃO DO MAPA
     drive_base.use_gyro(True)
 
     resetar_guinada() 
@@ -300,6 +300,42 @@ def start7():
     drive_base.straight(200)
     motor_anexo_esquerda.run_time(-300,2000)
     drive_base.straight(-150)
+
+
+def start8():
+    drive_base.settings(500,800)
+    drive_base.straight(500)
+    resetar_guinada()
+    giroPID(-42, 1.5, 0.001, 1)
+    drive_base.settings(500,300)
+    drive_base.straight(490)
+    motor_anexo_esquerda.run_angle(500, 80)
+    drive_base.settings(700,5000)
+    drive_base.straight(-450)
+    resetar_guinada()
+    giroPID(30, 1.5, 0.001, 1)
+    drive_base.straight(-480)
+
+
+
+def start9():
+    resetar_guinada()
+    drive_base.settings(400,300)
+    drive_base.straight(730)
+    giroPID(34,1.5,0.0001,1)
+    #motor_anexo_direita.run_time(350,1000)
+    drive_base.settings(400,300)
+    drive_base.straight(330)
+    motor_anexo_direita.run_angle(-200,200)
+    resetar_guinada()
+    giroPID(25,1.5,0.0001,1)
+    motor_anexo_direita.run_angle(200,70)
+    resetar_guinada()
+    giroPID(-25,1.5,0.0001,1)
+
+
+
+
 #=======================EXECUÇÃO PRINCIPAL==========================#
 if __name__ == "__main__":
     # Definindo os estados
@@ -311,6 +347,8 @@ if __name__ == "__main__":
         {"name": "Start 5", "action": lambda: start3()},
         {"name": "Start 6", "action": lambda: start6()},
         {"name": "Start 7", "action": lambda: start7()},
+        {"name": "Start 8", "action": lambda: start8()},
+        {"name": "Start 9", "action": lambda: start9()},
 
 
     ]
