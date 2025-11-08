@@ -173,7 +173,7 @@ def start6(): #start 6 #START MISSÃO GANGORRA E OQUE ESTÁ A VENDA
 
     drive_base.settings(300,200) #DEFINIR VELOCIDADE PARA A PRIMEIRA RETA
     drive_base.straight(40) #ANDAR PARA FRENTE ANTES DO GIRO
-    giroPID(-47,1.5,0.0003,120) #GIRAR PARA A ESQUERDA EM DIREÇÃO A MISSÃO DA GANGORRA
+    giroPID(-48,2,0.0003,120) #GIRAR PARA A ESQUERDA EM DIREÇÃO A MISSÃO DA GANGORRA
     wait(500)
     resetar_guinada() #DEFINIR GUINDADA PARA ZERO
     drive_base.settings(900,2000) #DEFINIR VELOCIDADE PARA A SEGUNDA RETA
@@ -182,8 +182,9 @@ def start6(): #start 6 #START MISSÃO GANGORRA E OQUE ESTÁ A VENDA
     motor_anexo_esquerda.run_angle(600,350) #ABAIXAR O ANEXO ESQUERDO PARA ABAIXAR A ALAVANCA DA MISSÃO OQUE ESTÁ A VENDA
     motor_anexo_direita.run_angle(-400,350) #ABAIXAR O ANEXO DIREITO PARA PEGAR O ARTEFATO DA MISSÃO DA GANGORRA
 
-    drive_base.settings(200,300) #MUDAR A VELOCIDADE  PARA A VOLTA
-    drive_base.straight(-660) #VOLTAR PARA BASE
+    drive_base.settings(200,200) #MUDAR A VELOCIDADE  PARA A VOLTA
+    drive_base.straight(-650) #VOLTAR PARA BASE
+
     wait (50)
     drive_base.use_gyro(False)
 
@@ -223,10 +224,23 @@ def start4(): #start4 #travessia
    drive_base.straight(-150) #VOLTAR PARA TRÁS
    resetar_guinada() #DEFINIR GUINADA PARA ZERO
    giroPID(59,0.7,0.0003,120) #GIRAR PARA A DIREITA
-   drive_base.straight(620)#IR PARA A FRENTE
+   drive_base.straight(420)#IR PARA A FRENTE
+   resetar_guinada()
+   giroPID(-87,0.7,0.0003,120)
+   motor_anexo_direita.run_time(300,1200)
+   drive_base.straight(80)
+   motor_anexo_direita.run_time(-300,1200)
+
+
+
    resetar_guinada() #DEFINIR GUINADA PARA ZERO
-   giroPID(75,0.7,0.0003,120) #GIRAR PARA A DIREITA
-   drive_base.straight(190)#IR PARA FRENTE
+   giroPID(87,0.7,0.0003,120) #GIRAR PARA A DIREITA
+   resetar_guinada()
+   drive_base.straight(170)
+   giroPID(76,0.7,0.0003,120)
+
+
+   drive_base.straight(280)#IR PARA FRENTE
    drive_base.straight(-25) #VOLTAR PARA TRAS
    resetar_guinada() #DEFINIR GUINADA PARA ZERO
    giroPID(-2,2,0.003,120) #GIRAR PARA ESQUERDA
@@ -313,46 +327,36 @@ def start7():
 
 
 def start8():
-    motor_anexo_direita.run_time(200,2000, wait=False)
-    motor_anexo_esquerda.run_time(200,2000, wait=True)
-    wait(100)
     resetar_guinada()
-    drive_base.settings(400,300)
+    drive_base.settings(700,1000)
     drive_base.straight(810)
-    giroPID(42,1.5,0.0001,1)
+    giroPID(35,1.5,0.001,1)
     #motor_anexo_direita.run_time(350,1000)
     drive_base.settings(400,300)
-    drive_base.straight(270)
-    resetar_guinada()
-    giroPID(4,1.5,0.001,1)
-    motor_anexo_direita.run_angle(-200,200)
-    resetar_guinada()
-    drive_base.straight(-80)
+    drive_base.straight(330)
+    wait (200)
+    drive_base.straight(-170)
 
-    giroPID(-32,1.5,0.0001,1)
-    drive_base.straight(110)
-    motor_anexo_esquerda.run_time(-50,2500)
-    wait(500)
-    drive_base.straight(-330)
-    '''drive_base.straight(-60)
-    resetar_guinada()
-    giroPID(-30,1.5,0.0001,1)
-    drive_base.straight(100)
-    drive_base.straight(-100)'''
+  
 def start9():
     
-    drive_base.settings(500,800)
+    drive_base.settings(460,800)
     #drive_base.straight(200)
     drive_base.straight(390)
-    motor_anexo_direita.run_time(800,800)
+    #motor_anexo_direita.run_time(800,800)
     wait(200)
-    motor_anexo_direita.run_time(-800,800)
-    motor_anexo_direita.run_time(800,800)
+    motor_anexo_esquerda.run_time(-800,800)
+    motor_anexo_esquerda.run_time(800,800)
     wait(200)
-    motor_anexo_direita.run_time(-800,800)
-    motor_anexo_direita.run_time(800,800)
+    motor_anexo_esquerda.run_time(-800,800)
+    motor_anexo_esquerda.run_time(800,800)
     wait(200)
-    motor_anexo_direita.run_time(-800,800)
+    motor_anexo_esquerda.run_time(-800,800)
+    motor_anexo_esquerda.run_time(800,800)
+    wait(200)
+    motor_anexo_esquerda.run_time(-800,800)
+    motor_anexo_esquerda.run_time(800,800)
+
     drive_base.settings(900,8000)
     drive_base.straight(-400)
     sm.next_state()
@@ -369,9 +373,9 @@ if __name__ == "__main__":
         {"name": "Start 3", "action": lambda: start3()},
         {"name": "Start 4", "action": lambda: start4()},
         {"name": "Start 5", "action": lambda: start5()},
-        {"name": "Start 6", "action": lambda: start6()},
-        {"name": "Start 7", "action": lambda: start7()},
-        {"name": "Start 8", "action": lambda: start9()},
+        {"name": "Start 6", "action": lambda: start9()},
+        {"name": "Start 7", "action": lambda: start6()},
+        {"name": "Start 8", "action": lambda: start7()},
         {"name": "Start 9", "action": lambda: start8()},
 
 
