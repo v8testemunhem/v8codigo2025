@@ -1,5 +1,5 @@
 from pybricks.pupdevices import Motor
-from pybricks.parameters import Port, Direction, Button
+from pybricks.parameters import Port, Direction, Button, Stop
 from pybricks.robotics import DriveBase
 from pybricks.hubs import PrimeHub
 from pybricks.tools import wait
@@ -26,7 +26,7 @@ motor_anexo_esquerda = Motor(Port.A)
 
 # Initialize the drive base. In this example, the wheel diameter is 56mm.
 # The distance between the two wheel-ground contact points is 112mm.
-drive_base = DriveBase(left_motor, right_motor, wheel_diameter=56, axle_track=112)
+drive_base = DriveBase(left_motor, right_motor, wheel_diameter=62, axle_track=82)
 
 # Optionally, uncomment the line below to use the gyro for improved accuracy.
 drive_base.use_gyro(True)
@@ -95,41 +95,60 @@ def start5(): #start5 #START DAS PEDRAS CONSISTE EM ATIVAR O ESCORREAMNTO DAS RO
     
     
     
-    drive_base.settings(350,500) #MUDAR VELOCIDADE
+    drive_base.settings(500,600) #MUDAR VELOCIDADE
     wait (50)
     resetar_guinada()
 
-    drive_base.straight(570) #ANDAR PRA FRENTE
-    giroPID(28,1.1,0.0001,1) #VIRAR PRO LADO
-    resetar_guinada()
-    #drive_base.settings(200,500) #MUDAR VELOCIDADE
-    drive_base.settings(350,200) #MUDAR VELOCIDADE
+    drive_base.straight(700) #ANDAR PRA FRENTE
+    motor_anexo_esquerda.run_time(600,1000) #ABAIXAR O ANEXO ESQUERDO PARA PEGAR O ARTEFATO
+    drive_base.straight(130) #ANDAR PRA FRENTE
+    motor_anexo_esquerda.run_time(-300,1200) #ABAIXAR O ANEXO ESQUERDO PARA PEGAR O ARTEFATO
 
-    drive_base.straight(125) #ANDAR PRA FRENTE EM DIREÇÃO A ATIVAÇÃO DAS PEDRAS
-    drive_base.straight(-40) #ANDAR PRA TRAZ  
-    giroPID(50,1.1,0.0001,1) #VIRAR PRO LADO
-    resetar_guinada()
-    drive_base.straight(90) #ANDAR PRA FRENTE EMPURANDO AS PEDRAS 
-    motor_anexo_direita.run_angle(-300,185)
-    resetar_guinada()
 
-    wait(100)
-    drive_base.straight(140) #ANDAR PRA FRENTE PUXANDO A ARGOLA 
-    motor_anexo_direita.run_angle(300,200)
-    drive_base.straight(-220) #ANDAR PRA TRAZ
-    giroPID(52,1.5,0.001,1) #VIRAR PRO LADO
+
+    drive_base.straight(-40) #ANDAR PRA FRENTE
+    giroPID(-35,1.1,0.001,1) #VIRAR PRO LADO 
+    resetar_guinada()    
+    drive_base.straight(-50) #ANDAR PRA FRENTE
+
+    #giroPID(55,1.1,0.0001,1) #VIRAR PRO LADO 
+    #drive_base.straight(-20) #ANDAR PRA FRENTE
+
+    resetar_guinada()    
+    giroPID(-34,1.1,0.001,1) #VIRAR PRO LADO   
+    drive_base.settings(300,400) #MUDAR VELOCIDADE
+
+ 
+    drive_base.straight(-230) #ANDAR PRA FRENTE
     resetar_guinada()
-    drive_base.settings(400,1000) #MUDAR VELOCIDADE
+    giroPID(-10,1.1,0.001,1) #VIRAR PRO LADO 
+
+    wait(400)
+    drive_base.straight(280) #ANDAR PRA FRENTE
+    resetar_guinada()
+    giroPID(-122,1.1,0.001,1) #VIRAR PRO LADO 
+    drive_base.straight(30) #ANDAR PRA FRENTE
+   
+    motor_anexo_direita.run_time(-800,800)
+    motor_anexo_direita.run_time(800,800)
+    wait(200)
+    motor_anexo_direita.run_time(-800,800)
+    motor_anexo_direita.run_time(800,800)
+    wait(200)
+    motor_anexo_direita.run_time(-800,800)
+    motor_anexo_direita.run_time(800,800)
+    wait(200)
+    motor_anexo_direita.run_time(-800,800)
+    motor_anexo_direita.run_time(800,800)
+    resetar_guinada()
+    giroPID(20,1.1,0.001,1)
+    drive_base.settings(900,9000)
+    drive_base.straight(700)
+
+
+
     
-    drive_base.straight(-160) #ANDAR PRA TRAZ EMPURANDO A ALAVANCA
-    resetar_guinada()
-    giroPID(-5,1.5,0.001,1) #VIRAR PRO LADO
-    drive_base.straight(-20) #ANDAR PRA TRAZ EMPURANDO A ALAVANCA
-    drive_base.straight(50) #ANDAR PRA FRENTE
-    giroPID(30,1.5,0.001,1) #VIRAR PRO LADO EM DIREÇÃO A BASE
-    resetar_guinada()
-    drive_base.settings(900,8000) #MUDAR VELOCIDADE
-    drive_base.straight(630) #ANDAR PRA FRENTE PARA A BASE    
+    
     drive_base.use_gyro(False)
 
     sm.next_state()
@@ -139,10 +158,10 @@ def start1(): #start1 #START DAS MISSÕES DA ESCAVAÇÃO SUPERFICIAL E DA REVELA
 
     resetar_guinada() 
 
-    drive_base.settings(400,500) #DEFINIÇÃO DA VELOCIDADE PARA A RETA
-    drive_base.straight(620) #ANDAR PARA FRENTE EM DIREÇÃO A MISSÃO DA ESCAVAÇÃO SUPERFICIAL
+    drive_base.settings(500,800) #DEFINIÇÃO DA VELOCIDADE PARA A RETA
+    drive_base.straight(690) #ANDAR PARA FRENTE EM DIREÇÃO A MISSÃO DA ESCAVAÇÃO SUPERFICIAL
 
-    giroPID(-44,1.5,0.001,1) #GIRAR PARA ESQUERDA
+    giroPID(-41,1.5,0.001,1) #GIRAR PARA ESQUERDA
     resetar_guinada() #MUDAR GUINADA PARA ZERO
     drive_base.settings(200,200) #MUDANÇA DE VELOCIDADE PARA CONCLUIR A MISSÃO DA ESCAVAÇÃO SUPERFICIAL
     drive_base.straight(180) #IR PARA FRENTE PARA CONCLUIR A MISSÃO
@@ -181,7 +200,7 @@ def start6(): #start 6 #START MISSÃO GANGORRA E OQUE ESTÁ A VENDA
     wait(300)
     resetar_guinada() #DEFINIR GUINDADA PARA ZERO
     drive_base.settings(900,7000) #DEFINIR VELOCIDADE PARA A SEGUNDA RETA
-    drive_base.straight(450) #ANDAR PARA FRENTE EM DIREÇÃO A MISSÃO DA GANGORRA
+    drive_base.straight(480) #ANDAR PARA FRENTE EM DIREÇÃO A MISSÃO DA GANGORRA
     wait (300)
     motor_anexo_esquerda.run_angle(600,350) #ABAIXAR O ANEXO ESQUERDO PARA ABAIXAR A ALAVANCA DA MISSÃO OQUE ESTÁ A VENDA
     motor_anexo_direita.run_angle(-400,350) #ABAIXAR O ANEXO DIREITO PARA PEGAR O ARTEFATO DA MISSÃO DA GANGORRA
@@ -192,13 +211,13 @@ def start6(): #start 6 #START MISSÃO GANGORRA E OQUE ESTÁ A VENDA
     drive_base.straight(-150) #VOLTAR PARA BASE
     drive_base.straight(30)
     resetar_guinada()
-    giroPID(-33,2,0.001,120) #GIRAR PARA A ESQUERDA EM DIREÇÃO A MISSÃO DA GANGORRA
+    giroPID(20,2,0.001,120) #GIRAR PARA A ESQUERDA EM DIREÇÃO A MISSÃO DA GANGORRA
     drive_base.straight(-200)
     resetar_guinada()
-    giroPID(40,3,0.0003,120) #GIRAR PARA A ESQUERDA EM DIREÇÃO A MISSÃO DA GANGORRA
+    giroPID(-130,3,0.0003,120) #GIRAR PARA A ESQUERDA EM DIREÇÃO A MISSÃO DA GANGORRA
     drive_base.settings(900,5000) #DEFINIR VELOCIDADE PARA A PRIMEIRA RETA
 
-    drive_base.straight(-240)
+    drive_base.straight(-290)
 
     drive_base.use_gyro(False)
 
@@ -209,18 +228,28 @@ def start2(): #start2 #START MISSÃO OPERAÇÃO RESGATE
     drive_base.use_gyro(True)
 
     resetar_guinada()
-    drive_base.settings(500,150) #DEFINIR VELOCIDADE PARA A PRIMEIRA RETA
-    drive_base.straight(520) #INICIAR MOVIMENTO PARA A FRENTE EM DIREÇÃO A MISSÃO OPERAÇÃO RESGATE
+    drive_base.settings(500,300) #DEFINIR VELOCIDADE PARA A PRIMEIRA RETA
+    drive_base.straight(580) #INICIAR MOVIMENTO PARA A FRENTE EM DIREÇÃO A MISSÃO OPERAÇÃO RESGATE
     drive_base.settings(700,700) #MUDAR VELOCIDADE PARA IR PARA TRÁS
+    #giroPID(1,3,0.0003,120) #GIRAR PARA A ESQUERDA EM DIREÇÃO A MISSÃO DA GANGORRA
+    motor_anexo_esquerda.run_time(-300,1200)
+    drive_base.straight(20) #INICIAR MOVIMENTO PARA A FRENTE EM DIREÇÃO A MISSÃO OPERAÇÃO RESGATE
+    motor_anexo_direita.run_time(-700,2000)
+    motor_anexo_esquerda.run_time(900,1500)
+    #motor_anexo_esquerda.run_time(700,2000)
+    motor_anexo_direita.run_time(700,2000)
 
-    drive_base.straight(-100) #VOLTAR PARA TRÁS
+
+
+
+    #drive_base.straight(-100) #VOLTAR PARA TRÁS
     #drive_base.settings(700,300) #MUDAR VELOCIDADE PARA IR PARA FRENTE PARA CONCLUIR A MISSÃO OPERAÇÃO DE RESGATE
 
    # drive_base.straight(270) #IR PARA FRENTE PARA CONCLUIR  A MISSÃO OPERAÇÃO DE RESGATE
     #wait (1000)
     drive_base.settings(800,5000) #MUDAR VELOCIDADE PARA IR PARA TRÁS 
 
-    drive_base.straight(-420) #VOLTAR PARA TRÁS
+    drive_base.straight(-800) #VOLTAR PARA TRÁS
 
     drive_base.use_gyro(False)
     sm.next_state()
@@ -273,34 +302,33 @@ def start3():  #start da compartilhada #PESCA DE ARTEFATOS
    drive_base.use_gyro(True)
 
    resetar_guinada() 
-   drive_base.settings(300,400)
-   drive_base.straight(590) #COMEÇAR A RETA
-   giroPID(-90,0.7,0.0003,120) #GIRAR PARA A DIREITA
-   drive_base.straight(-300) #IR PARA A FRENTE
+   drive_base.settings(500,800)
+   drive_base.straight(630) #COMEÇAR A RETA
+   giroPID(-90,1,0.001,120) #GIRAR PARA A DIREITA
+   drive_base.straight(-310) #IR PARA A FRENTE
    resetar_guinada() #DEFINIR GUINADA PARA ZERO
-   giroPID(88,0.7,0.0003,120) #GIRAR PARA A ESQUERDA ANTES DO MOVIMENTO DO ANEXO
+   giroPID(88,1,0.001,120) #GIRAR PARA A ESQUERDA ANTES DO MOVIMENTO DO ANEXO
    #motor_anexo_esquerda.run_time(-500,1000) #ABAIXAR O ANEXO ESQUERDO
    #drive_base.straight(15) #ANDAR UM POUCO
 
    motor_anexo_esquerda.run_time(400,1200) #LEVANTAR O ANEXO PARA CONCLUIR A MISSÃO
-   wait (100)
    motor_anexo_direita.run_time(-300,1000) #LEVANTA A CREMALHEIRA 
 
-   drive_base.straight(125) #IR UM POUCO PARA FRENTE ANTES DO MOVIMENTO DOS ANEXOS PARA FINAIZAR AS MISSÕES
-   motor_anexo_direita.run_time(800,2000) #ABAIXA A CREMALHEIRA 
-   motor_anexo_direita.run_time(-700,2000) #LEVANTA A CREMALHEIRA
+   drive_base.straight(145) #IR UM POUCO PARA FRENTE ANTES DO MOVIMENTO DOS ANEXOS PARA FINAIZAR AS MISSÕES
+   motor_anexo_direita.run_time(800,1100) #ABAIXA A CREMALHEIRA 
+   motor_anexo_direita.run_time(-700,1100) #LEVANTA A CREMALHEIRA
    drive_base.settings(800,8000)
 
    drive_base.straight(-95)
    resetar_guinada()
-   giroPID(90,0.7,0.0003,120)
+   giroPID(90,1,0.001,120)
    drive_base.straight(-310)
    #motor_anexo_esquerda.run_time(500,1000) #ABAIXAR O ANEXO ESQUERDO
 
 
    resetar_guinada()
 
-   giroPID(-75,1.5,0.0003,120)
+   giroPID(-65,1.5,0.0003,120)
    #drive_base.settings(900,3000)
    drive_base.straight(-700)
    drive_base.use_gyro(False)
